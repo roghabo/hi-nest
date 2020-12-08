@@ -11,14 +11,14 @@ describe('AppController (e2e)', () => {
       imports: [AppModule],
     }).compile();
 
-    app = moduleFixture.createNestApplication();
+    app = moduleFixture.createNestApplication(); //실제 어플리케이션과 테스트 어플리케이션은 다름
     app.useGlobalPipes(
       new ValidationPipe({
         whitelist: true,
         forbidNonWhitelisted: true,
         transform: true,
       }),
-    );
+    ); //그래서 이렇게 테스팅 환경도 실제 구동 환경의 설정을 적용해 줘야 함
     await app.init();
   });
 
